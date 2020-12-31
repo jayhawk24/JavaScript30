@@ -58,9 +58,32 @@
         background: black;
         position: absolute;
         top: 50%;
+        transform-origin: 100%;
+        transition: all 0.01s;
+        transition-timing-function: cubic-bezier(0.35, 5.47, 0.25, 1);
       }
     </style>
 
-    <script></script>
+    <script>
+      window.setInterval(function () {
+        const date = new Date();
+        hrs = (date.getHours() / 12) * 360 + 90;
+        min = date.getMinutes() * 6 + 90;
+        sec = date.getSeconds() * 6 + 90;
+        transformh = "rotate(" + hrs + "deg)";
+        transformm = "rotate(" + min + "deg)";
+        transforms = "rotate(" + sec + "deg)";
+
+        document.getElementsByClassName(
+          "hour-hand"
+        )[0].style.transform = transformh;
+        document.getElementsByClassName(
+          "min-hand"
+        )[0].style.transform = transformm;
+        document.getElementsByClassName(
+          "second-hand"
+        )[0].style.transform = transforms;
+      }, 1000);
+    </script>
   </body>
 </html>
